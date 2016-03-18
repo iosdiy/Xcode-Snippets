@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDECodeSnippetCompletionPrefix</key>
+	<string>refreshFooter</string>
+	<key>IDECodeSnippetCompletionScopes</key>
+	<array>
+		<string>CodeBlock</string>
+	</array>
+	<key>IDECodeSnippetContents</key>
+	<string>typeof(_refreshFooter) __weak weakRefreshFooter = _refreshFooter;
+        _refreshFooter.beginRefreshingBlock=^(){
+            // 后台执行：
+            dispatch_async(dispatch_get_global_queue(0, 0), ^{
+                //do someting in other thread
+                
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    typeof(weakRefreshFooter) __strong strongRefreshFooter = weakRefreshFooter;
+                    // 主线程刷新视图
+
+                    [strongRefreshFooter endRefreshing];
+                });
+            });
+        };</string>
+	<key>IDECodeSnippetIdentifier</key>
+	<string>5714D328-C478-49F3-B1B2-D170DAC474C0</string>
+	<key>IDECodeSnippetLanguage</key>
+	<string>Xcode.SourceCodeLanguage.Objective-C</string>
+	<key>IDECodeSnippetSummary</key>
+	<string>refresh Footer Block</string>
+	<key>IDECodeSnippetTitle</key>
+	<string>begin refresh footer block</string>
+	<key>IDECodeSnippetUserSnippet</key>
+	<true/>
+	<key>IDECodeSnippetVersion</key>
+	<integer>2</integer>
+</dict>
+</plist>
